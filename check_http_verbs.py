@@ -9,9 +9,8 @@ def convertTuple(tup):
     return str
 
 target=input("Your Target: ")
-port=input("TCP Port (default: 80): ")
 
-if port == "":
+if (port := input("TCP Port (default: 80): ")) == "":
     port=80
 
 port=int(port)
@@ -24,8 +23,7 @@ response = r1.getheaders()
 
 for each_item in response:
     each_item=convertTuple(each_item)
-    result=re.match( r'^allow: ', each_item.lower())
-    if result:
+    if result := re.match( r'^allow: ', each_item.lower()):
         print(each_item)
         exit(0)
 
